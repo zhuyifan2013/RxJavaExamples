@@ -2,14 +2,14 @@ package com.yifan.rxjavaexample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import com.airbnb.mvrx.MvRxView
+import com.yifan.rxjavaexample.gamecenter.GameCenterViewModel
 import com.yifan.rxjavaexample.gamecenter.GameListFragment
 
-class MainActivity : AppCompatActivity() {
+class GameCenterActivity:AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().replace(R.id.container, GameListFragment()).commit()
     }
-
 }
