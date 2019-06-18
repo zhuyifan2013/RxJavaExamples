@@ -16,11 +16,29 @@ data class GameCenterState(
 class GameCenterViewModel(initialState: GameCenterState, val datasource: GameDatasource) : BaseMvRxViewModel<GameCenterState>(initialState, debugMode = true) {
 
     init {
+//        initDb()
         fetchGameList()
     }
 
+    private fun initDb() {
+
+        val games = listOf(
+                Game(0, 1, "PS41", GamePlatform.PS4, "2019-01-01", 0, null),
+                Game(0, 2, "PS42", GamePlatform.PS4, "2019-01-04", 0, null),
+                Game(0, 3, "PS43", GamePlatform.PS4, "2019-01-08", 0, null),
+                Game(0, 4, "PS44", GamePlatform.PS4, "2019-01-14", 0, null),
+                Game(0, 1, "XBOX1", GamePlatform.XBOX, "2019-01-02", 0, null),
+                Game(0, 2, "XBOX2", GamePlatform.XBOX, "2019-01-06", 0, null),
+                Game(0, 3, "XBOX3", GamePlatform.XBOX, "2019-01-09", 0, null),
+                Game(0, 1, "SWITCH1", GamePlatform.Switch, "2019-01-03", 0, null),
+                Game(0, 2, "SWITCH2", GamePlatform.Switch, "2019-01-10", 0, null),
+                Game(0, 3, "SWITCH3", GamePlatform.Switch, "2019-01-18", 0, null)
+        )
+        datasource.initGames(games)
+    }
 
     private fun fetchGameList() {
+        Log.i("Yifan", "fetchGameList")
 
 //        Observable.combineLatest(mutableListOf(
 //                getGameListObservable(GamePlatform.PS4),
@@ -39,10 +57,10 @@ class GameCenterViewModel(initialState: GameCenterState, val datasource: GameDat
 
         datasource.getGames().toObservable()
                 .doOnSubscribe {
-                    Log.i("Yifan", "loading...");
+                    Log.i("Yifan", "loading...")
                 }
                 .doOnComplete {
-                    Log.i("Yifan", "load finish");
+                    Log.i("Yifan", "load finish")
                 }
                 .execute { copy(gameList = it) }
 
@@ -65,8 +83,13 @@ class GameCenterViewModel(initialState: GameCenterState, val datasource: GameDat
 //
 //    }
 
-    public fun likeGame() {
-
+    fun likeGame(game: Game) {
+        val newGame = game.copy(likeCount = game.likeCount + 1)
+        datasource.updategame(newGame).subscribe({
+            fetchGameList()
+        }, { e ->
+            Log.i("Yifan", "Something wrong " + e)
+        })
     }
 
     companion object : MvRxViewModelFactory<GameCenterViewModel, GameCenterState> {

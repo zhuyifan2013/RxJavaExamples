@@ -10,7 +10,7 @@ import com.yifan.rxjavaexample.R
 import kotlinx.android.synthetic.main.game_item.view.*
 
 
-class GameListAdapter(var games: MutableList<Game>, private val context: Context) : RecyclerView.Adapter<GameItemViewHolder>() {
+class GameListAdapter(var games: MutableList<Game>, private val context: Context, private val viewModel: GameCenterViewModel) : RecyclerView.Adapter<GameItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameItemViewHolder {
         return GameItemViewHolder(LayoutInflater.from(context).inflate(R.layout.game_item, parent, false))
@@ -24,7 +24,7 @@ class GameListAdapter(var games: MutableList<Game>, private val context: Context
         holder.gameName.text = games[position].name
         holder.likeGameBtn.text = games[position].likeCount.toString()
         holder.likeGameBtn.setOnClickListener {
-            Log.i("Yifan", "Click!!")
+            viewModel.likeGame(games[position])
         }
     }
 

@@ -9,7 +9,7 @@ import com.yifan.rxjavaexample.gamecenter.db.GameConverters
 @Entity(tableName = "game")
 data class Game(
 
-        @PrimaryKey
+        @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name="id")
         val id:Int,
 
@@ -29,7 +29,7 @@ data class Game(
         var likeCount: Int,
 
         @ColumnInfo(name = "image_url")
-        val imageUrl: String
+        val imageUrl: String?
 )
 
 enum class GamePlatform {

@@ -12,12 +12,9 @@ import kotlinx.android.synthetic.main.game_list.*
 
 class GameListFragment : BaseMvRxFragment() {
 
-    private var adapter:GameListAdapter? = null
+    private var adapter: GameListAdapter? = null
     private val gamecenterViewModel: GameCenterViewModel by fragmentViewModel(GameCenterViewModel::class)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return View.inflate(context, R.layout.game_list, null)
     }
@@ -27,7 +24,7 @@ class GameListFragment : BaseMvRxFragment() {
 
         game_list.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = GameListAdapter(mutableListOf(),context)
+            adapter = GameListAdapter(mutableListOf(), context, gamecenterViewModel)
         }
         adapter = game_list.adapter as GameListAdapter?
     }
