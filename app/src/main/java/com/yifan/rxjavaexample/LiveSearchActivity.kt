@@ -1,6 +1,6 @@
 package com.yifan.rxjavaexample
 
-import android.os.Bundle
+import1 android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.rxbinding3.widget.textChanges
