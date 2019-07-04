@@ -1,6 +1,6 @@
 package com.yifan.rxjavaexample
 
-import android.os.Bundle
+import android.os.Bundle1
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.rxbinding3.widget.textChanges
@@ -24,7 +24,7 @@ class LiveSearchActivity : AppCompatActivity() {
     }
 
     private fun updateList(s:CharSequence) {
-        Log.i("Yifan", "New chars : $s")
+        Log.i("Yifan", "New chars11 : $s")
     }
 
 }
