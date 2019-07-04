@@ -5,5 +5,5 @@ steps:
     agents:
       ruby: "*"
     command:
-      - echo "--- Bundle Install" && bundle install
+      - echo "--- 11Bundle Install" && bundle install
       - echo "--- Cutting China Android branch" && bundle exec rake release_branch:create_and_push
