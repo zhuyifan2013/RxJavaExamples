@@ -1,7 +1,7 @@
-steps:
-  - name: "Cutting branch"
-    env:
-      job_identifier: 'cut_china_android_release_branch'
-    command:
-      - echo "--- 11Bundle Install" && bundle install
-      - echo "--- Cutting China Android branch" && bundle exec rake release_branch:create_and_push
+# steps:
+#   - name: "Cutting branch"
+#     env:
+#       job_identifier: 'cut_china_android_release_branch'
+#     command:
+#       - echo "--- 11Bundle Install" && bundle install
+#       - echo "--- Cutting China Android branch" && bundle exec rake release_branch:create_and_push
