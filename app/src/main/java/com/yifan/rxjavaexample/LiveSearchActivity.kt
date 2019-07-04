@@ -24,7 +24,7 @@ class LiveSearchActivity : AppCompatActivity() {
     }
 
     private fun updateList(s:CharSequence) {
-        Log.i("Yifan", "New chars : $s")
+        Log.i("Yifan", "New chars11 : $s")
     }
 
 }
