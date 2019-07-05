@@ -13,5 +13,8 @@ class Commit
   	list = client.commits('zhuyifan2013/RxJavaExamples', options)
   	puts list.first.sha
 
+  	result = client.merge('zhuyifan2013/RxJavaExamples', 'temp', list.first.sha, {:commit_message => list.first.commit.message})
+  	puts result.sha
+
   end
 end
